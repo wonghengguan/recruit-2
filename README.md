@@ -27,11 +27,11 @@ The Test
 You are required to create a simple Car Rental web application. The web site may have follow views:
 1)	Login Page
 2)	Main Page <br/>
-    a.	Search with filters (model, car types, year, condition, price, etc) <br/>
+    a.	Search with filters (model, car types, year, condition, price, etc) (get data from webservice SOAP/ REST) <br/>
     b.	Logout <br/>
 
 Important Note: 
-1)	You are required to fetch car rented data from your service/REST API. For simplicity, no password/security is required. <br/>
+1)	You are required to fetch the data [i.e. Car listing] from your service/REST API. For simplicity, no password/security is required. <br/>
 2)	Your solution should be ported easily to motorbike or bicycle rental business. <br/>
 
 The following are the technical specifications: <br/>
