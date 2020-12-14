@@ -1,5 +1,6 @@
 package com.carrental.backend.controller;
 
+import com.carrental.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +16,11 @@ import java.util.HashMap;
 public class UserController {
 	
 	@Autowired
-	private UserRepository userRepo;
+	private UserService userService;
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public Object getUser(@RequestBody UserForm form) {
-		User user = userRepo.getUserByUsernameAndPassword(form.getUsername(),form.getPassword());
+		User user = userService.getUser(form);
 
 		HashMap<String, String> responseMap = new HashMap<>();
 

@@ -1,0 +1,75 @@
+<section>
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card" *ngIf="!showDetails">
+        <div class="card-header pb-2">
+          <h4 class="card-title">Car List</h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-7 mt-1 mb-1 input-group">
+                    <input class="form-control" type="text" name="searchTerm1" placeholder="BRAND NAME / MODEL NAME / YEAR / CONDITION / PRICE" [(ngModel)]="searchTerm1"/>
+                    <div class="input-group-append">
+                      <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="search(1)" *ngIf="!loading$">
+                        <a class="text-decoration-none text-white"><i class="fa fa-search"></i></a>
+                      </button>
+                      <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" disabled *ngIf="loading$">
+                        <a class="text-decoration-none text-white"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></a>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-3 mt-1 mb-1">
+                    <select id="sort" name="sort" class="form-control pull-right" [(ngModel)]="sortType" (change)="doSort(1)">
+                      <option value="0" selected="">Sort By</option>
+                      <option value="pricea">Price low to high</option>
+                      <option value="priced">Price high to low</option>
+                      <option value="branda">Brand Name A-Z</option>
+                      <option value="brandz">Brand Name Z-A</option>
+                      <option value="modela">Model Name A-Z</option>
+                      <option value="modelz">Model Name Z-A</option>
+                      <option value="cona">Condition low to high</option>
+                      <option value="cond">Condition high to low</option>
+                      <option value="old">Oldest to newest</option>
+                      <option value="new">Newest to oldest</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                    <th scope="col" class="primary lighten-2">No</th>
+                    <th scope="col" class="primary lighten-2">Brand</th>
+                    <th scope="col" class="primary lighten-2">Model</th>
+                    <th scope="col" class="primary lighten-2">Price</th>
+                    <th scope="col" class="primary lighten-2">Year</th>
+                    <th scope="col" class="primary lighten-2">Condition</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let record of recordList$;let row = index" style="cursor: pointer;">
+                    <td>{{row+1}}</td>
+                    <td scope="row">{{record.brandName}}</td>
+                    <td>{{record.modelName}}</td>
+                    <td>MYR {{record.price.toFixed(2)}}</td>
+                    <td>{{record.year}}</td>
+                    <td>{{record.condition}} / 10</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

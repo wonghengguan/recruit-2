@@ -10,20 +10,25 @@ import {UserService} from "./services/user/user-service";
 import {AppConfig} from "./app-config";
 import {ApiRequestService} from "./services/ApiRequestService";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { CarsComponent } from './cars/cars.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {CarService} from "./services/car/car-service";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    CarsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     FormsModule
   ],
-  providers: [UserService,AppConfig,ApiRequestService],
+  providers: [UserService,AppConfig,ApiRequestService,CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
