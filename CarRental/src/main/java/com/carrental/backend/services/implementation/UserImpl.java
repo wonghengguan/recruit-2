@@ -15,7 +15,16 @@ public class UserImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User getUser(UserForm form) {
+    public User getUserById(UserForm form) {
+        User user = userRepository.getUserByID(form.getId());
+        if(user!=null) {
+            return user;
+        }
+        return null;
+    }
+
+    @Override
+    public User getUserByUsernameAndPassword(UserForm form) {
         User user = userRepository.getUserByUsernameAndPassword(form.getUsername(), form.getPassword());
         if(user!=null) {
             return user;

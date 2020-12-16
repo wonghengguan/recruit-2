@@ -1,1 +1,49 @@
-<p>home works!</p>
+<section>
+  <div class="row text-left">
+    <div class="col-sm-12">
+        <div class="card-header pb-2">
+          <h4 class="card-title">Home</h4>
+          <h4 *ngIf="user!=null" class="card-title">Hi {{user.username}}!</h4>
+        </div>
+        <div class="card-content">
+          <div class="card-body">
+            <form>
+              <div class="table-responsive">
+                <table class="table table-striped" border="1px solid black">
+                  <thead>
+                  <tr>
+                    <th scope="col" class="primary lighten-2">No</th>
+                    <th scope="col" class="primary lighten-2">Brand</th>
+                    <th scope="col" class="primary lighten-2">Model</th>
+                    <th scope="col" class="primary lighten-2">Price</th>
+                    <th scope="col" class="primary lighten-2">Year</th>
+                    <th scope="col" class="primary lighten-2">Condition</th>
+                    <th scope="col" class="primary lighten-2">Car plate</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let userVehicle of userVehicleList;let row = index" style="cursor: pointer;">
+                    <td>{{row+1}}</td>
+                    <td scope="row">{{userVehicle.car.brandName}}</td>
+                    <td>{{userVehicle.car.modelName}}</td>
+                    <td>MYR {{userVehicle.car.price.toFixed(2)}}</td>
+                    <td>{{userVehicle.car.year}}</td>
+                    <td>{{userVehicle.car.condition}} / 10</td>
+                    <td>{{userVehicle.car.registrationPlate}}</td>
+                    <td><button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" type="button" (click)="return(userVehicle.car.id)">
+                      <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Return</a></button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </form>
+          </div>
+          <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;"  (click)="proceedToCarList()">
+            <a class="text-decoration-none text-white"><i class="fa fa-search"></i>View cars</a></button>
+        </div>
+
+    </div>
+  </div>
+</section>

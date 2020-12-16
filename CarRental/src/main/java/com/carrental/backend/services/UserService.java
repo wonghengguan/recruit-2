@@ -4,5 +4,6 @@ import com.carrental.backend.form.UserForm;
 import com.carrental.backend.model.User;
 
 public interface UserService {
-    User getUser(UserForm form);
+    User getUserById(UserForm form);
+    User getUserByUsernameAndPassword(UserForm form);
 }

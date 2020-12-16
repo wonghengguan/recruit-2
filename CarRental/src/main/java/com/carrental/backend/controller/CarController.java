@@ -21,7 +21,7 @@ public class CarController {
     public CustomPageResponse getCarList(@RequestBody CarForm form) {
         CustomPageResponse response = new CustomPageResponse();
 
-        List<Car> carList = carService.getCarList();
+        List<Car> carList = carService.getAvailableCarList();
         List<Object> objectList = new ArrayList<Object>(carList);
 
         if(carList.size()>0)

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../services/user/user-service";
 import {Router} from "@angular/router";
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   public errorMsg: any;
 
   constructor(private router: Router,
+              private cookieService: CookieService,
               private userService: UserService) { }
 
   ngOnInit(): void {
@@ -38,13 +40,11 @@ export class LoginComponent implements OnInit {
       };
 
       this.userService.login(form).subscribe(data => {
-        if (data.ERR != undefined) {
-          if (data.ERR == 'User not found!') {
+        if (data == null) {
             this.errorMsg = 'User not found!';
-          }
-
         } else if (data != null) {
-          this.router.navigate(['/cars']);
+          this.cookieService.set("userId", data, 30,"/");
+          this.router.navigate(['/home']);
         }
       });
     }

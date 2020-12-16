@@ -2,6 +2,8 @@ package com.carrental.backend.model;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -17,7 +19,7 @@ public class User {
 	
 	@Column(name="password")
 	private String password;
-	
+
 	public User() {
 		
 	}
@@ -47,6 +49,4 @@ public class User {
 		this.password = password;
 	}
 
-	
-	
 }

@@ -1,7 +1,6 @@
 package com.carrental.backend.model;
 
 import javax.persistence.*;
-
 @Entity
 @Table(name="userVehicles")
 public class UserVehicle {
@@ -12,11 +11,11 @@ public class UserVehicle {
 	private Long id;
 	
 	@JoinColumn(name = "userID")
-    @ManyToOne(cascade=CascadeType.ALL, optional = true, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private User user;
 	
 	@JoinColumn(name = "carID")
-    @ManyToOne(cascade=CascadeType.ALL, optional = true, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Car car;
 
 	public Long getId() {

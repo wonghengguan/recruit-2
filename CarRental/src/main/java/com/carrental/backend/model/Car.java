@@ -1,8 +1,8 @@
 package com.carrental.backend.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="cars")
@@ -10,9 +10,12 @@ public class Car extends Vehicle{
 	
 	@Column(name="numberOfDoors")
 	private int numberOfDoors;
-	
+
 	@Column(name="carType")
 	private String carType;
+
+	@Column(name="registrationPlate")
+	private String registrationPlate;
 	
 	public Car() {
 		super();
@@ -35,6 +38,14 @@ public class Car extends Vehicle{
 	}
 	public void setCarType(String carType) {
 		this.carType = carType;
+	}
+
+	public String getRegistrationPlate() {
+		return registrationPlate;
+	}
+
+	public void setRegistrationPlate(String registrationPlate) {
+		this.registrationPlate = registrationPlate;
 	}
 
 }

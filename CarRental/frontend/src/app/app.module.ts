@@ -13,6 +13,7 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { CarsComponent } from './cars/cars.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {CarService} from "./services/car/car-service";
+import {UserVehicleService} from "./services/uservehicle/uservehicle-service";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {CarService} from "./services/car/car-service";
     NgbModule,
     FormsModule
   ],
-  providers: [UserService,AppConfig,ApiRequestService,CarService],
+  providers: [UserService,AppConfig,ApiRequestService,CarService,UserVehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

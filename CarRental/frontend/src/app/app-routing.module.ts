@@ -16,7 +16,10 @@ const routes: Routes = [
     path: 'login', component: LoginComponent, data: { title: 'Car rental - Login' }
   },
   {
-    path: 'cars', component: CarsComponent, data: { title: 'Cars' }
+    path: 'home', component: HomeComponent, data: { title: 'Car rental - Home' }
+  },
+  {
+    path: 'cars', component: CarsComponent, data: { title: 'Car rental - Available cars' }
   }
   ];
 

@@ -10,4 +10,6 @@ public interface CarService {
     List<Car> getCarByFilter(CarForm form);
 
     List<Car> getCarList();
+
+    List<Car> getAvailableCarList();
 }

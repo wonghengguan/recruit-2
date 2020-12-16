@@ -11,6 +11,10 @@ export class UserService {
     return this.apiService.post("api/user/login", body);
   }
 
+  getUser(body) {
+    return this.apiService.post("api/user/getUser", body);
+  }
+
   logout() {
     this.router.navigate(['/login']);
   }

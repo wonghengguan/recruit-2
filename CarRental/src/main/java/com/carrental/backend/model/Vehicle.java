@@ -24,9 +24,12 @@ public abstract class Vehicle {
 	
 	@Column(name="price")
 	private double price;
-	
+
 	@Column(name="year")
 	private int year;
+
+	@Column(name="isAvailable")
+	private Boolean isAvailable;
 	
 	public Vehicle() {
 		
@@ -81,6 +84,12 @@ public abstract class Vehicle {
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
-	
+
+	public Boolean getAvailable() {
+		return isAvailable;
+	}
+
+	public void setAvailable(Boolean available) {
+		isAvailable = available;
+	}
 }

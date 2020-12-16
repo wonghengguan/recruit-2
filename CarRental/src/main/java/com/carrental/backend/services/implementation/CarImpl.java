@@ -5,7 +5,6 @@ import com.carrental.backend.model.Car;
 import com.carrental.backend.repository.CarRepository;
 import com.carrental.backend.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,5 +28,10 @@ public class CarImpl implements CarService {
     @Override
     public List<Car> getCarList() {
         return carRepository.findAll();
+    }
+
+    @Override
+    public List<Car> getAvailableCarList() {
+        return carRepository.getCarByAvailability(true);
     }
 }

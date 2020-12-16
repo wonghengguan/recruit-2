@@ -54,6 +54,7 @@
                     <th scope="col" class="primary lighten-2">Price</th>
                     <th scope="col" class="primary lighten-2">Year</th>
                     <th scope="col" class="primary lighten-2">Condition</th>
+                    <th scope="col" class="primary lighten-2">Car plate</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -64,12 +65,15 @@
                     <td>MYR {{record.price.toFixed(2)}}</td>
                     <td>{{record.year}}</td>
                     <td>{{record.condition}} / 10</td>
-                    <td><button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="rent()" *ngIf="!loading$">
+                    <td>{{record.registrationPlate}}</td>
+                    <td><button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="rent(record.id)" *ngIf="!loading$">
                       <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Rent</a></button>
                     </td>
                   </tr>
                   </tbody>
                 </table>
+                <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="backToHome()">
+                  <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Home</a></button>
               </div>
 
             </form>

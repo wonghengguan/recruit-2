@@ -17,6 +17,12 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     );
 
     @Query("select car from Car car "
+            + "where car.isAvailable = :isAvailable")
+    List<Car> getCarByAvailability(
+            @Param("isAvailable") Boolean isAvailable
+    );
+
+    @Query("select car from Car car "
             + "where car.brandName like :brandName")
     List<Car> getCarByBrandName(
             @Param("brandName") String brandName
