@@ -49,7 +49,9 @@ export class HomeComponent implements OnInit {
     this.userVehicleService.getUserVehicleList(userVehicleForm).subscribe( res => {
           if(res != null) {
             this.userVehicleList=res;
-        }
+        } else {
+            this.userVehicleList=null;
+          }
       }
     )
   }
@@ -62,14 +64,19 @@ export class HomeComponent implements OnInit {
     this.userVehicleService.returnCar(userVehicleForm).subscribe( res => {
         if(res != null) {
           this.userVehicleList=res;
+        } else {
+          this.userVehicleList=null;
         }
       }
     )
-    this.ngOnInit();
   }
 
   proceedToCarList() {
     this.router.navigate(['/cars']);
   }
 
+  logout() {
+    this.cookieService.delete("userId");
+    this.router.navigate(['']);
+  }
 }

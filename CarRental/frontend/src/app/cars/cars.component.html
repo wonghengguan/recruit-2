@@ -13,15 +13,15 @@
                   <div class="col-sm-7 mt-1 mb-1 input-group">
                     <input class="form-control" type="text" name="brandName" placeholder="BRAND NAME" [(ngModel)]="brandName"/>
                     <input class="form-control" type="text" name="modelName" placeholder="MODEL NAME" [(ngModel)]="modelName"/>
-                    <input class="form-control" type="text" name="year" placeholder="YEAR" [(ngModel)]="year"/>
-                    <input class="form-control" type="text" name="price" placeholder="PRICE" [(ngModel)]="price"/>
-                    <input class="form-control" type="text" name="condition" placeholder="CONDITION" [(ngModel)]="condition"/>
+                    <input class="form-control" type="text" name="year" placeholder="YEAR FROM" [(ngModel)]="yearFrom"/>
+                    <input class="form-control" type="text" name="price" placeholder="MAX PRICE" [(ngModel)]="maxPrice"/>
+                    <input class="form-control" type="text" name="condition" placeholder="MIN CONDITION" [(ngModel)]="condition"/>
                     <div class="input-group-append">
                       <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="search()" *ngIf="!loading$">
-                        <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Filter</a>
+                        <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Search all</a>
                       </button>
-                      <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" disabled *ngIf="loading$">
-                        <a class="text-decoration-none text-white"><i class="fa fa-circle-o-notch fa-spin fa-fw"></i></a>
+                      <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="filter()" *ngIf="!loading$">
+                        <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Filter</a>
                       </button>
                     </div>
                   </div>
@@ -45,15 +45,15 @@
               </div>
 
               <div class="table-responsive">
-                <table class="table table-striped" border="1px solid black">
+                <table *ngIf="recordList$!=null" class="table table-striped" border="1px solid black">
                   <thead>
                   <tr>
                     <th scope="col" class="primary lighten-2">No</th>
                     <th scope="col" class="primary lighten-2">Brand</th>
                     <th scope="col" class="primary lighten-2">Model</th>
-                    <th scope="col" class="primary lighten-2">Price</th>
+                    <th scope="col" class="primary lighten-2">Price / week</th>
                     <th scope="col" class="primary lighten-2">Year</th>
-                    <th scope="col" class="primary lighten-2">Condition</th>
+                    <th scope="col" class="primary lighten-2">Condition / 10</th>
                     <th scope="col" class="primary lighten-2">Car plate</th>
                   </tr>
                   </thead>
@@ -62,16 +62,17 @@
                     <td>{{row+1}}</td>
                     <td scope="row">{{record.brandName}}</td>
                     <td>{{record.modelName}}</td>
-                    <td>MYR {{record.price.toFixed(2)}}</td>
+                    <td>MYR {{record.price}}</td>
                     <td>{{record.year}}</td>
                     <td>{{record.condition}} / 10</td>
                     <td>{{record.registrationPlate}}</td>
-                    <td><button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="rent(record.id)" *ngIf="!loading$">
+                    <td><button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="rent(record.id)">
                       <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Rent</a></button>
                     </td>
                   </tr>
                   </tbody>
                 </table>
+                <h4 *ngIf="recordList$==null" class="card-title">No available cars</h4>
                 <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;" (click)="backToHome()">
                   <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Home</a></button>
               </div>

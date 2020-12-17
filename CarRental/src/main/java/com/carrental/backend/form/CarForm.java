@@ -4,13 +4,12 @@ public class CarForm {
     private String brandName;
     private String modelName;
     private double condition;
-    private double price;
-    private int year;
+    private double maxPrice;
+    private int yearFrom;
     private int numberOfDoors;
     private String carType;
+    private String sort;
 
-    private double price1;
-    private double price2;
 
     public String getBrandName() {
         return brandName;
@@ -36,20 +35,12 @@ public class CarForm {
         this.condition = condition;
     }
 
-    public double getPrice() {
-        return price;
+    public double getMaxPrice() {
+        return maxPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
+    public void setMaxPrice(double maxPrice) {
+        this.maxPrice = maxPrice;
     }
 
     public int getNumberOfDoors() {
@@ -68,19 +59,19 @@ public class CarForm {
         this.carType = carType;
     }
 
-    public double getPrice1() {
-        return price1;
+    public String getSort() {
+        return sort;
     }
 
-    public void setPrice1(double price1) {
-        this.price1 = price1;
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 
-    public double getPrice2() {
-        return price2;
+    public int getYearFrom() {
+        return yearFrom;
     }
 
-    public void setPrice2(double price2) {
-        this.price2 = price2;
+    public void setYearFrom(int yearFrom) {
+        this.yearFrom = yearFrom;
     }
 }

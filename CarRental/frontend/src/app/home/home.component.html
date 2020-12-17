@@ -8,7 +8,7 @@
         <div class="card-content">
           <div class="card-body">
             <form>
-              <div class="table-responsive">
+              <div *ngIf="userVehicleList!=null"  class="table-responsive">
                 <table class="table table-striped" border="1px solid black">
                   <thead>
                   <tr>
@@ -37,11 +37,17 @@
                   </tbody>
                 </table>
               </div>
-
+              <h4 *ngIf="userVehicleList==null" class="card-title">Proceed to car list to rent a car!</h4>
             </form>
           </div>
+          <div>
           <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;"  (click)="proceedToCarList()">
             <a class="text-decoration-none text-white"><i class="fa fa-search"></i>View cars</a></button>
+          </div>
+          <div>
+          <button class="btn btn-primary lighten-2 mb-0" style="margin-left: 1px;"  (click)="logout()">
+            <a class="text-decoration-none text-white"><i class="fa fa-search"></i>Log out</a></button>
+          </div>
         </div>
 
     </div>

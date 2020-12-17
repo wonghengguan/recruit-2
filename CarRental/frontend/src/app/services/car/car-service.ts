@@ -20,4 +20,17 @@ export class CarService {
         )
     });
   }
+
+  getCarListByFilter(form): Observable<any> {
+    return Observable.create(observer => {
+      this.apiRequest.post('api/cars/getCarListByFilter', form)
+        .subscribe(
+          res => {
+            observer.next(res);
+          }, err => {
+            observer.error(err);
+          }
+        )
+    });
+  }
 }

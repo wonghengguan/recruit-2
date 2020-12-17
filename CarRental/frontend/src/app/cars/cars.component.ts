@@ -20,9 +20,9 @@ export class CarsComponent implements OnInit {
   //Search
   public brandName:any;
   public modelName:any;
-  public price:any;
+  public maxPrice:any;
   public condition:any;
-  public year:any;
+  public yearFrom:any;
   public loading$:any;
 
   public recordList$:any;
@@ -45,41 +45,75 @@ export class CarsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userId = this.cookieService.get("userId");
     this.showDetails = false;
     this.search();
   }
 
   search(){
-    this.userId = this.cookieService.get("userId");
-
-    let userForm = {
-      id:this.userId,
-    }
-    this.userService.getUser(userForm).subscribe( res => {
-        if(res != null){
-          this.user=res;
-        } else {
-          console.log("cannot get user");
-        }
-      }
-    )
-
     let carForm = {
-      brandName:'Mazda'
     };
 
     this.loading$ = true;
     this.carService.getCarList(carForm).subscribe(res => {
         if (res != null) {
           this.recordList$ = res.list;
+        } else {
+          this.recordList$ = null;
         }
         this.loading$ = false;
       }
     );
+    console.log(this.recordList$)
+  }
+
+  filter(){
+
+    let formMaxPrice = this.maxPrice;
+    if(formMaxPrice==undefined) {
+      formMaxPrice=-1;
+    }
+    let formYearFrom = this.yearFrom;
+    if(formYearFrom==undefined) {
+      formYearFrom=-1;
+    }
+    let formCondition = this.condition;
+    if(formCondition==undefined) {
+      formCondition=-1;
+    }
+    let formBrandName = this.brandName;
+    if(formBrandName==undefined) {
+      formBrandName="";
+    }
+    let formModelName = this.modelName;
+    if(formModelName==undefined){
+      formModelName="";
+    }
+
+    let carForm = {
+      brandName:formBrandName,
+      modelName:formModelName,
+      maxPrice:formMaxPrice,
+      yearFrom:formYearFrom,
+      condition:formCondition,
+      sort:this.sortType
+    };
+
+    this.loading$ = true;
+    this.carService.getCarListByFilter(carForm).subscribe(res => {
+        if (res != null) {
+          this.recordList$ = res.list;
+        } else {
+          this.recordList$ = null;
+        }
+        this.loading$ = false;
+      }
+    );
+    console.log(this.recordList$)
   }
 
   doSort(){
-    this.search();
+    this.filter();
   }
 
   rent(carId){
@@ -90,6 +124,8 @@ export class CarsComponent implements OnInit {
     this.userVehicleService.rentCar(userVehicleForm).subscribe( res => {
         if(res != null) {
           this.recordList$ = res.list;
+        } else {
+          this.recordList$ = null;
         }
       this.loading$ = false;
       }
@@ -99,4 +135,5 @@ export class CarsComponent implements OnInit {
   backToHome() {
     this.router.navigate(['/home']);
   }
+
 }

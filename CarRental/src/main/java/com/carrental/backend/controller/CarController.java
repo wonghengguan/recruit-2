@@ -31,4 +31,19 @@ public class CarController {
         }
         return null;
     }
+
+    @RequestMapping(value="/getCarListByFilter", method = RequestMethod.POST)
+    public CustomPageResponse getFilterCarList(@RequestBody CarForm form) {
+        CustomPageResponse response = new CustomPageResponse();
+
+        List<Car> carList = carService.getCarListByFilter(form);
+        List<Object> objectList = new ArrayList<Object>(carList);
+
+        if(carList.size()>0)
+        {
+            response.setList(objectList);
+            return response;
+        }
+        return null;
+    }
 }
