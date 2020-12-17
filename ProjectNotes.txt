@@ -3,3 +3,7 @@ Hi!
 I have used Java, Hibernate as backend, and used Angular for front end.
 
 Using intelliJ, you may import the project, after it is built, you can start the backend, and run the web on localhost:8080
+
+For database, I am using MsSql, for the project it is set to create-drop for the table.
+
+I have attached a test SQL script for the test purpose. Please update the username and password to connect to your local database in application.properties.
