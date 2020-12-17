@@ -110,7 +110,7 @@ public class CarImpl implements CarService {
         }
 
         Query query = em.createNativeQuery("select * from " + carTable + " car "
-                + "where " + filterQuery + orderQuery
+                + "where " + filterQuery + orderQuery, Car.class
         );
 
         if(!brandFilter.equalsIgnoreCase("")) {
@@ -133,11 +133,6 @@ public class CarImpl implements CarService {
 
         em.close();
 
-        System.out.println("CARLISTSIZE = " + carList.size());
-        if(carList!=null && carList.size() > 0) {
-            return carList;
-        }
-
-        return null;
+        return carList;
     }
 }

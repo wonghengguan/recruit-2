@@ -52,6 +52,7 @@ export class CarsComponent implements OnInit {
 
   search(){
     let carForm = {
+      sort:this.sortType
     };
 
     this.loading$ = true;
@@ -64,21 +65,19 @@ export class CarsComponent implements OnInit {
         this.loading$ = false;
       }
     );
-    console.log(this.recordList$)
   }
 
   filter(){
-
     let formMaxPrice = this.maxPrice;
-    if(formMaxPrice==undefined) {
+    if(formMaxPrice==undefined||formMaxPrice=="") {
       formMaxPrice=-1;
     }
     let formYearFrom = this.yearFrom;
-    if(formYearFrom==undefined) {
+    if(formYearFrom==undefined||formYearFrom=="") {
       formYearFrom=-1;
     }
     let formCondition = this.condition;
-    if(formCondition==undefined) {
+    if(formCondition==undefined || formCondition=="") {
       formCondition=-1;
     }
     let formBrandName = this.brandName;
@@ -109,7 +108,6 @@ export class CarsComponent implements OnInit {
         this.loading$ = false;
       }
     );
-    console.log(this.recordList$)
   }
 
   doSort(){
